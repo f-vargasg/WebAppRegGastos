@@ -33,7 +33,7 @@ public class MonedaDao {
             mon.setCodMonedaN(res.getInt(1));
             mon.setDesMoneda(res.getString(2));
             mon.setUsuIngreso(res.getString(3));
-            mon.setFecIngreso(res.getDate(4));
+            mon.setFecIngreso(res.getTimestamp(4));
             lista.add(mon);
         }
         ps.close();

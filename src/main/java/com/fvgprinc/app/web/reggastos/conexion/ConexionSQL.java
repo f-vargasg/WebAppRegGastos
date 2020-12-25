@@ -15,8 +15,8 @@ import java.sql.SQLException;
  */
 public class ConexionSQL {
         private static final String IP_ADDRESS = "10.25.1.86";
-    private static final String DB_NAME = "TESTDB";
-    private static final String USER = "admin";
+    private static final String DB_NAME = "MYAPPS";
+    private static final String USER = "root";
     private static final String PASSWORD = "valerie5250";
     private static final String SERVICE = "3306";   // Port
 

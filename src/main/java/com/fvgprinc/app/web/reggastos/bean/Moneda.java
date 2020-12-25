@@ -6,6 +6,7 @@
 package com.fvgprinc.app.web.reggastos.bean;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -35,12 +36,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Moneda.findByFecIngreso", query = "SELECT m FROM Moneda m WHERE m.fecIngreso = :fecIngreso")})
 public class Moneda implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "cod_moneda_n")
-    private Integer codMonedaN;
     @Size(max = 100)
     @Column(name = "des_moneda")
     private String desMoneda;
@@ -52,8 +47,15 @@ public class Moneda implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "fec_ingreso")
-    @Temporal(TemporalType.DATE)
-    private Date fecIngreso;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Timestamp fecIngreso;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "cod_moneda_n")
+    private Integer codMonedaN;
 
     public Moneda() {
     }
@@ -62,7 +64,7 @@ public class Moneda implements Serializable {
         this.codMonedaN = codMonedaN;
     }
 
-    public Moneda(Integer codMonedaN, String usuIngreso, Date fecIngreso) {
+    public Moneda(Integer codMonedaN, String usuIngreso, Timestamp fecIngreso) {
         this.codMonedaN = codMonedaN;
         this.usuIngreso = usuIngreso;
         this.fecIngreso = fecIngreso;
@@ -92,11 +94,11 @@ public class Moneda implements Serializable {
         this.usuIngreso = usuIngreso;
     }
 
-    public Date getFecIngreso() {
+    public Timestamp getFecIngreso() {
         return fecIngreso;
     }
 
-    public void setFecIngreso(Date fecIngreso) {
+    public void setFecIngreso(Timestamp fecIngreso) {
         this.fecIngreso = fecIngreso;
     }
 
@@ -124,5 +126,6 @@ public class Moneda implements Serializable {
     public String toString() {
         return "com.fvgprinc.app.web.reggastos.bean.Moneda[ codMonedaN=" + codMonedaN + " ]";
     }
+    
     
 }

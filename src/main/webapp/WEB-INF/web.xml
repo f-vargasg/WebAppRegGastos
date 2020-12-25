@@ -8,4 +8,19 @@
             30
         </session-timeout>
     </session-config>
+        <display-name>Registro de gastos (Maven) </display-name>
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
+        <init-param>
+            <param-name>struts.convention.action.packages</param-name>
+            <param-value>operaciones</param-value>
+        </init-param>
+            
+    </filter>	 
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
 </web-app>

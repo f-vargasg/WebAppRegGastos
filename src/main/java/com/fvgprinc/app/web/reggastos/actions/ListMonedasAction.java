@@ -9,7 +9,7 @@ import com.fvgprinc.app.web.reggastos.bean.Moneda;
 import com.fvgprinc.app.web.reggastos.bl.MonedaBL;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.struts2.convention.annotation.Action;
@@ -33,25 +33,25 @@ public class ListMonedasAction extends ActionSupport {
     private int codMonedaN;
     private String desMoneda;
     private String usuIngreso;
-    private Date fecIngreso;
+    private Timestamp fecIngreso;
 
-    private List<ListMonedasAction> lstMonAction = null;
+    private List<ListMonedasAction> lstMonedas = null;
 
     @Override
     public String execute() throws Exception {
         // ResultSet rs = DisplayDao.Report();
         MonedaBL monBL = new MonedaBL();
-        ArrayList<Moneda> lstMon = monBL.getList();
-        lstMonAction = new ArrayList<ListMonedasAction>();
-
-        if (lstMon.size() > 0) {
-            for (Moneda mon : lstMon) {
+        ArrayList<Moneda> lstMonBL = monBL.getList();
+        lstMonedas = new ArrayList<ListMonedasAction>();
+       // xxxxxxx
+        if (lstMonBL.size() > 0) {
+            for (Moneda mon : lstMonBL) {
                 dto = new ListMonedasAction();
                 dto.setCodMonedaN(mon.getCodMonedaN());
                 dto.setDesMoneda(mon.getDesMoneda());
                 dto.setUsuIngreso(mon.getUsuIngreso());
                 dto.setFecIngreso(mon.getFecIngreso());
-                lstMonAction.add(dto);
+                lstMonedas.add(dto);
             }
 
         }
@@ -59,6 +59,16 @@ public class ListMonedasAction extends ActionSupport {
         return SUCCESS;
     }
 
+    public List<ListMonedasAction> getLstMonedas() {
+        return lstMonedas;
+    }
+
+    public void setLstMonedas(List<ListMonedasAction> lstMonedas) {
+        this.lstMonedas = lstMonedas;
+    }
+
+    
+    
     public int getCodMonedaN() {
         return codMonedaN;
     }
@@ -85,21 +95,15 @@ public class ListMonedasAction extends ActionSupport {
         this.usuIngreso = usuIngreso;
     }
 
-    public Date getFecIngreso() {
+    public Timestamp getFecIngreso() {
         return fecIngreso;
     }
 
-    public void setFecIngreso(Date fecIngreso) {
+    public void setFecIngreso(Timestamp fecIngreso) {
         this.fecIngreso = fecIngreso;
     }
 
-    public List<ListMonedasAction> getMonedaLst() {
-        return lstMonAction;
-    }
 
-    public void setMonedaLst(List<ListMonedasAction> monedaLst) {
-        this.lstMonAction = monedaLst;
-    }
 
     
 }

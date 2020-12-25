@@ -9,7 +9,6 @@ import com.fvgprinc.app.web.reggastos.bean.Moneda;
 import com.fvgprinc.app.web.reggastos.dao.MonedaDao;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
