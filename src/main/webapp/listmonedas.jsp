@@ -25,12 +25,12 @@
 	<display:table name="lstMonedas" pagesize="12" requestURI="listmonedasaction.action">
 
 		<display:caption>Lista de Monedas</display:caption>
-
+                <dis    
 		<display:column property="codMonedaN" title="Cod.Moneda" />
 		<display:column property="desMoneda" title="Desc.Moneda" />
 		<display:column property="usuIngreso" title="Ing. Por" />
                 <display:column property="fecIngreso" title="Fec.Ingreso" />
-
+                
 		<display:setProperty name="paging.banner.placement" value="bottom" />
 	</display:table>
 

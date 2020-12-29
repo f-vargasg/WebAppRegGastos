@@ -41,7 +41,7 @@ public class ListMonedasAction extends ActionSupport {
     public String execute() throws Exception {
         // ResultSet rs = DisplayDao.Report();
         MonedaBL monBL = new MonedaBL();
-        ArrayList<Moneda> lstMonBL = monBL.getList();
+        ArrayList<Moneda> lstMonBL = monBL.getList(-1);
         lstMonedas = new ArrayList<ListMonedasAction>();
        // xxxxxxx
         if (lstMonBL.size() > 0) {

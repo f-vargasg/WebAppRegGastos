@@ -7,7 +7,6 @@ package com.fvgprinc.app.web.reggastos.bean;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;

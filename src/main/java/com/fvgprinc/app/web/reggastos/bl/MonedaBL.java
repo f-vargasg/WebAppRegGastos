@@ -22,11 +22,30 @@ public class MonedaBL {
         this.moneDao = new MonedaDao();
     }
     
+    public boolean insertar(Moneda pmoneda) throws SQLException {
+        boolean res;
+        
+        res = moneDao.insertar(pmoneda);
+        return res;
+    }
     
+    public boolean modificar(Moneda pmoneda) throws SQLException {
+        boolean res ;
+        res = moneDao.modificar(pmoneda);
+        
+        return res;
+    }
     
-    public ArrayList<Moneda> getList() throws SQLException
+    public boolean borrar(int pCodMonedaN) throws SQLException {
+        boolean res;
+        
+        res = moneDao.borrar(pCodMonedaN);
+        return res;
+    }
+    
+    public ArrayList<Moneda> getList(int pcodMonedaN) throws SQLException
     {
-        ArrayList<Moneda> res = this.moneDao.getList();
+        ArrayList<Moneda> res = this.moneDao.getList(pcodMonedaN);
         return res;
     }
     
