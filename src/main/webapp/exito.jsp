@@ -13,7 +13,7 @@
     </head>
     <body>
         <p><strong>Transacción realizada con exito</strong></p>
-    <s:form action="/consMonedas.action">
+    <s:form action="/%{exitoAction}.action">
         <s:submit value="Consultar"></s:submit>
     </s:form>
 </body>
