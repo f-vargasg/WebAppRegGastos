@@ -5,15 +5,12 @@
  */
 package com.fvgprinc.app.web.reggastos.actions.catalogs;
 
-import com.fvgprinc.app.web.reggastos.bean.Moneda;
 import com.fvgprinc.app.web.reggastos.bean.TipoGasto;
-import com.fvgprinc.app.web.reggastos.bl.MonedaBL;
 import com.fvgprinc.app.web.reggastos.bl.TipoGastoBL;
 import com.fvgprinc.app.web.reggastos.common.GlobalConst;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
-import java.util.List;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -23,9 +20,9 @@ import org.apache.struts2.convention.annotation.Result;
  * @author garfi
  */
 @Namespace(value = "/")
-@Action(value = "showInsTipoGasto", results = {
+@Action(value = "showFrmTipoGasto", results = {
     @Result(name = SUCCESS, location = "/frmTipoGasto.jsp")})
-public class ShowInsTipoGastoAction extends ActionSupport {
+public class ShowFrmTipoGastoAction extends ActionSupport {
 
     private int codTipogastoN;
 

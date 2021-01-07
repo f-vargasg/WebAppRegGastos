@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.fvgprinc.app.web.reggastos.actions;
+package com.fvgprinc.app.web.reggastos.actions.catalogs;
 
 import com.fvgprinc.app.web.reggastos.bean.Moneda;
 import com.fvgprinc.app.web.reggastos.bl.MonedaBL;
@@ -18,41 +18,29 @@ import org.apache.struts2.convention.annotation.Result;
  *
  * @author garfi
  */
-
 @Namespace(value = "/")
-@Action(value = "showModMoneda", results = {
-    @Result(name = SUCCESS, location = "/modMoneda.jsp")})
-public class ShowModMonedaAction extends ActionSupport  {
+@Action(value = "consMonedas", results = {
+    @Result(name = SUCCESS, location = "/consMonedas.jsp")})
+public class ConsMonedasAction extends ActionSupport {
 
-    private Moneda moneda;
-    private int codMonedaN;
-    
-    
+     //private List<Moneda> lstMonedas = new ArrayList<>();
+    private List<Moneda> lstMonedas = null;
+
     @Override
     public String execute() throws Exception {
         MonedaBL monedaBL = new MonedaBL();
-        List<Moneda> lstMon = monedaBL.getList(this.codMonedaN);
-        
-        lstMon.forEach(moneda1 -> {
-            this.moneda = moneda1;
-        });
-        
+
+        lstMonedas = monedaBL.getList(-1);
+
         return SUCCESS;
     }
 
-    public Moneda getMoneda() {
-        return moneda;
+    public List<Moneda> getLstMonedas() {
+        return lstMonedas;
     }
+
+    
     
     
 
-    public int getCodMonedaN() {
-        return codMonedaN;
-    }
-
-    public void setCodMonedaN(int codMonedaN) {
-        this.codMonedaN = codMonedaN;
-    }
-    
-    
 }

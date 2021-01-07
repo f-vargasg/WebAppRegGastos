@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.fvgprinc.app.web.reggastos.actions;
+package com.fvgprinc.app.web.reggastos.actions.catalogs;
 
 import com.fvgprinc.app.web.reggastos.bean.Moneda;
 import com.fvgprinc.app.web.reggastos.bl.MonedaBL;

@@ -6,6 +6,7 @@
 package com.fvgprinc.app.web.reggastos.dao;
 
 import com.fvgprinc.app.web.reggastos.bean.Moneda;
+import com.fvgprinc.app.web.reggastos.bean.TipoGasto;
 import com.fvgprinc.app.web.reggastos.conexion.ConexionSQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,32 +18,36 @@ import java.util.ArrayList;
  *
  * @author garfi
  */
-public class MonedaDao {
-
-    private final String nomEntity = "moneda";
+public class TipoGastoDao {
+    private final String nomEntity = "tipogasto";
+    
+    private final String  keyCond = "cod_tipogasto_n = ?" ;
 
     private final String stmInsert = "Insert into  " + nomEntity
-            + " (cod_moneda_n, des_moneda, usu_ingreso, fec_ingreso) "
-            + "values (?, ?, ? ,?);";
+            + " (cod_tipogasto_n,\n" +
+                "des_tipogasto,\n" +
+                "usu_ingreso,\n" +
+                "fec_ingreso) "
+            + "values (?, ?, ? ,?)";
     private final String stmUpdate = "Update " + nomEntity
-            + " set des_moneda = ?"
-            + " where cod_moneda_n = ? ";
+            + " set des_tipogasto = ?"
+            + " where  " + keyCond;
     private final String stmDelete = "Delete from  " + nomEntity
-                                     + " where cod_moneda_n = ?";
+                                     + " where " + keyCond;
 
     private final String sql2 = "Select * "
-            + "from " + nomEntity;
+                                + "from " + nomEntity;
 
-    public boolean insertar(Moneda moneda) throws SQLException {
+    public boolean insertar(TipoGasto tipoGasto) throws SQLException {
         boolean resultado = false;
 
         Connection con = ConexionSQL.getConnetion();
         PreparedStatement ps = con.prepareStatement(stmInsert);
 
-        ps.setInt(1, moneda.getCodMonedaN());
-        ps.setString(2, moneda.getDesMoneda());
-        ps.setString(3, moneda.getUsuIngreso());
-        ps.setTimestamp(4, moneda.getFecIngreso());
+        ps.setInt(1, tipoGasto.getCodTipogastoN());
+        ps.setString(2, tipoGasto.getDesTipogasto());
+        ps.setString(3, tipoGasto.getUsuIngreso());
+        ps.setTimestamp(4, tipoGasto.getFecIngreso());
 
         if (ps.executeUpdate() == 1) {
             resultado = true;
@@ -52,14 +57,14 @@ public class MonedaDao {
         return resultado;
     }
 
-    public boolean modificar(Moneda moneda) throws SQLException {
+    public boolean modificar(TipoGasto tipoGasto) throws SQLException {
         boolean resultado = false;
 
         Connection con = ConexionSQL.getConnetion();
         PreparedStatement ps = con.prepareStatement(stmUpdate);
 
-        ps.setString(1, moneda.getDesMoneda());
-        ps.setInt(2, moneda.getCodMonedaN());
+        ps.setString(1, tipoGasto.getDesTipogasto());
+        ps.setInt(2, tipoGasto.getCodTipogastoN());
 
         if (ps.executeUpdate() == 1) {
             resultado = true;
@@ -69,12 +74,12 @@ public class MonedaDao {
         return resultado;
     }
     
-    public boolean borrar(int pcodMonedaN) throws SQLException {
+    public boolean borrar(int pcodTipoGasto) throws SQLException {
         boolean resultado = false;
 
         Connection con = ConexionSQL.getConnetion();
         PreparedStatement ps = con.prepareStatement(stmDelete);
-        ps.setInt(1, pcodMonedaN);
+        ps.setInt(1, pcodTipoGasto);
 
         if (ps.executeUpdate() == 1) {
             resultado = true;
@@ -84,28 +89,28 @@ public class MonedaDao {
         return resultado;
     }
 
-    public ArrayList<Moneda> getList(int pcodMonedaN) throws SQLException {
-        ArrayList<Moneda> lista = new ArrayList<>();
+    public ArrayList<TipoGasto> getList(int pcodTipoGasto) throws SQLException {
+        ArrayList<TipoGasto> lista = new ArrayList<>();
         Connection conn = ConexionSQL.getConnetion();
         PreparedStatement ps = conn.prepareStatement(sql2);
         String sql = sql2;
-        String cond = (pcodMonedaN  > 0 ? " WHERE cod_moneda_n = " + Integer.toString(pcodMonedaN)
+        String cond = (pcodTipoGasto  > 0 ? " WHERE cod_tipogasto_n = " + 
+                       Integer.toString(pcodTipoGasto)
                 : "");
         ResultSet res = ps.executeQuery(sql2 + cond);
 
         while (res.next()) {
-            Moneda mon = new Moneda();
-            mon.setCodMonedaN(res.getInt(1));
-            mon.setDesMoneda(res.getString(2));
-            mon.setUsuIngreso(res.getString(3));
-            mon.setFecIngreso(res.getTimestamp(4));
-            lista.add(mon);
+            TipoGasto tg=  new TipoGasto();
+            tg.setCodTipogastoN(res.getInt(1));
+            tg.setDesTipogasto(res.getString(2));
+            tg.setUsuIngreso(res.getString(3));
+            tg.setFecIngreso(res.getTimestamp(4));
+            lista.add(tg);
         }
         ps.close();
         res.close();
         conn.close();
         return lista;
 
-    }
-
+    }    
 }

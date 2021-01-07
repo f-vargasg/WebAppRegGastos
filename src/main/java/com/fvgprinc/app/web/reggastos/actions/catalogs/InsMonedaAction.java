@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.fvgprinc.app.web.reggastos.actions;
+package com.fvgprinc.app.web.reggastos.actions.catalogs;
 
 import com.fvgprinc.app.web.reggastos.bean.Moneda;
 import com.fvgprinc.app.web.reggastos.bl.MonedaBL;
+import com.fvgprinc.app.web.reggastos.common.GlobalConst;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import java.sql.Timestamp;
@@ -28,10 +29,9 @@ public class InsMonedaAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-        
         java.sql.Timestamp ts;
         MonedaBL monedaBL = new MonedaBL();
-        this.moneda.setUsuIngreso("FVARGAS");
+        this.moneda.setUsuIngreso(GlobalConst.USER_GLOBAL);
         LocalDateTime ldt = LocalDateTime.now();
         ts = Timestamp.valueOf(ldt);
         this.moneda.setFecIngreso(ts);
