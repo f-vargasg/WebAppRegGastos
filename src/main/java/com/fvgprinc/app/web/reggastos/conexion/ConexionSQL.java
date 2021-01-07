@@ -14,7 +14,8 @@ import java.sql.SQLException;
  * @author garfi
  */
 public class ConexionSQL {
-        private static final String IP_ADDRESS = "10.25.1.86";
+
+    private static final String IP_ADDRESS = "10.25.1.86";
     private static final String DB_NAME = "MYAPPS";
     private static final String USER = "root";
     private static final String PASSWORD = "valerie5250";
@@ -29,15 +30,15 @@ public class ConexionSQL {
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         }
-        return DriverManager.getConnection("jdbc:mariadb://" + IP_ADDRESS + 
-                                           ":" + SERVICE + 
-                                           "/" + DB_NAME, USER, PASSWORD);
+        return DriverManager.getConnection("jdbc:mariadb://" + IP_ADDRESS
+                + ":" + SERVICE
+                + "/" + DB_NAME, USER, PASSWORD);
 
     }
-    
+
     public static void main(String[] args) throws SQLException {
         Connection conn = ConexionSQL.getConnetion();
-        if (conn  != null) {
+        if (conn != null) {
             System.out.println("Conexión Exitosa!!!");
         }
     }
